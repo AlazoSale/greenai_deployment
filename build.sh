@@ -1,19 +1,11 @@
 #!/usr/bin/env bash
-
-# Exit on error
+# exit on error
 set -o errexit
+python -m pip install --upgrade pip
 
-# Install dependencies
-pip install -r requirements.txt
+python -m pip install -r requirements.txt
+python -m pip install --force-reinstall -U setuptools
 
-# Collect static assets
 python manage.py collectstatic --no-input
-
-# Apply database migrations (optional)
+python manage.py makemigrations
 python manage.py migrate
-
-# Configure WSGI server (choose one based on your preference)
-
-# Option 1: Gunicorn (recommended for production)
-echo "Starting Gunicorn..."
-gunicorn mysite.wsgi:application -b 0.0.0.0:$PORT

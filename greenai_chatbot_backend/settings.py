@@ -141,14 +141,11 @@ WSGI_APPLICATION = 'greenai_chatbot_backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-
-
-DATABASES = {
-    'default': dj_database_url.config(
-        default= os.environ.get('DATABASE_URL'),
-        conn_max_age=600
-    )
+DATABASES ={
+    "default": dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
+
+
 HF_TOKEN = env('HF_TOKEN')
 PC_KEY = env('PC_KEY')
 MAX_RET_DOCS = env.int('MAX_RET_DOCS')
@@ -171,6 +168,7 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
 
 
 # Internationalization
