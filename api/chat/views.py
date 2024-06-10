@@ -25,4 +25,4 @@ class QueryAPIView(generics.GenericAPIView):
 class PingApiView(generics.GenericAPIView):
 
     def get(self, request):
-        return Response({"response": "Ok"}, status=status.HTTP_200_Ok)  
+        return Response({"response": "Ok"}, status=status.HTTP_200_OK)  
