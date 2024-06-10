@@ -1,1 +1,1 @@
-# greenai_deployment
+# GreenAI_MobileApp_Frontend
