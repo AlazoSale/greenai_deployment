@@ -22,3 +22,7 @@ class QueryAPIView(generics.GenericAPIView):
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)  
 
+class PingApiView(generics.GenericAPIView):
+
+    def get(self, request):
+        return Response({"response": "Ok"}, status=status.HTTP_200_Ok)  
