@@ -142,22 +142,13 @@ WSGI_APPLICATION = 'greenai_chatbot_backend.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 
-DATABASES = {
-    'default': dj_database_url.parse(os.environ.get('DATABASE_URL'), conn_max_age=600)
-}
 
-'''
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': env('DB_NAME'),
-        'USER': env('DB_USER'),
-        'PASSWORD': env('DB_PASSWORD'),
-        'HOST': env('DB_HOST'),
-        'PORT': env('DB_PORT'),
-    }
+    'default': dj_database_url.config(
+        default= os.environ.get('DATABASE_URL'),
+        conn_max_age=600
+    )
 }
-'''
 HF_TOKEN = env('HF_TOKEN')
 PC_KEY = env('PC_KEY')
 MAX_RET_DOCS = env.int('MAX_RET_DOCS')
