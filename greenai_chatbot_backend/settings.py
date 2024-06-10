@@ -1,12 +1,11 @@
 
 import environ
 import os
+import dj_database_url
 
 from pathlib import Path
 from datetime import timedelta
 from django.core.management.utils import get_random_secret_key
-
-
 
 env = environ.Env(
     # set casting, default value
@@ -142,6 +141,12 @@ WSGI_APPLICATION = 'greenai_chatbot_backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+
+DATABASES = {
+    'default': dj_database_url.config(conn_max_age=600)
+}
+
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -152,7 +157,7 @@ DATABASES = {
         'PORT': env('DB_PORT'),
     }
 }
-
+'''
 HF_TOKEN = env('HF_TOKEN')
 PC_KEY = env('PC_KEY')
 MAX_RET_DOCS = env.int('MAX_RET_DOCS')
