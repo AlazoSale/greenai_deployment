@@ -1,12 +1,18 @@
 from rest_framework import serializers
 
-# Package Imports
-from django.core.exceptions import ObjectDoesNotExist
-from django.db import IntegrityError
-from rest_framework import serializers
-from rest_framework.exceptions import ValidationError
-
 # Custom Imports
+from chat import models as chatModels
+
 
 class QuerySerializer(serializers.Serializer):
     query = serializers.CharField(max_length=1000)
+
+class ConversationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = chatModels.Conversation  
+        fields = ['uuid', 'summarized_conv']
+
+class ConversationMessagesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = chatModels.Message  
+        fields = ['query', 'response']
