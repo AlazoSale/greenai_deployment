@@ -151,6 +151,11 @@ PC_KEY = env('PC_KEY')
 MAX_RET_DOCS = env.int('MAX_RET_DOCS')
 MAX_SCORE = env.float('MAX_SCORE')
 
+
+subscription_key = env.float('subscription_key')
+region = env.float('region')
+translation_endpoint = env.float('translation_endpoint')
+
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
