@@ -152,9 +152,9 @@ MAX_RET_DOCS = env.int('MAX_RET_DOCS')
 MAX_SCORE = env.float('MAX_SCORE')
 
 
-subscription_key = env('subscription_key')
-region = env('region')
-translation_endpoint = env('translation_endpoint')
+SUBSCRIPTION_KEY = env('SUBSCRIPTION_KEY')
+REGION = env('REGION')
+TRANSLATION_ENDPOINT = env('TRANSLATION_ENDPOINT')
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
