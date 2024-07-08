@@ -5,7 +5,7 @@ RAG_SERVICE_URL = f"{API_INFERENCE_URL}/pipeline/feature-extraction/{model_id}"
 MISTRAL_API_URL = f"{API_INFERENCE_URL}/models/mistralai/Mistral-7B-Instruct-v0.2"
 
 
-SUPPORTED_LANGUAGES = {
+SUPPORTED_T2T_LANGUAGES = {
     "Hindi": "hi",
     "Bengali": "bn",
     "Gujarati": "gu",

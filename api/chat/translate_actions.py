@@ -5,6 +5,7 @@ import os, time, threading
 from os import environ
 import azure.cognitiveservices.speech as speechsdk
 
+#http://localhost:8000/api/translate/?text_to_translate=YourTextHere&target_lang=Hindi&source_lang=English
 def T2T_translation(text, target_language, source_language):
     headers = {
         'Ocp-Apim-Subscription-Key': settings.T2T_SUBSCRIPTION_KEY,
