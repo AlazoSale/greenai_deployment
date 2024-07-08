@@ -1,4 +1,5 @@
 import requests
+from django.conf import settings
 from api.misc import constants as miscConstants
 import os, time, threading
 from os import environ
@@ -6,16 +7,16 @@ import azure.cognitiveservices.speech as speechsdk
 
 def T2T_translation(text, target_language, source_language):
     headers = {
-        'Ocp-Apim-Subscription-Key': environ.get('T2T_subscription_key'),
+        'Ocp-Apim-Subscription-Key': settings.T2T_SUBSCRIPTION_KEY,
         'Content-Type': 'application/json',
-        'Ocp-Apim-Subscription-Region': environ.get('T2T_region'),
+        'Ocp-Apim-Subscription-Region': settings.T2T_REGION
     }    
     params = {
         'to': miscConstants.SUPPORTED_T2T_LANGUAGES[target_language],
     }    
     if source_language:
         params['from'] = miscConstants.SUPPORTED_T2T_LANGUAGES[source_language]    
-    response = requests.post(environ.get('T2T_translation_endpoint'), headers=headers, params=params, json=[{'Text': text}])
+    response = requests.post(settings.T2T_TRANSLATION_ENDPOINT, headers=headers, params=params, json=[{'Text': text}])
     response.raise_for_status()
     
     translation = response.json()[0]['translations'][0]['text']
@@ -68,8 +69,8 @@ def STT_translation(target_language, source_language, s_aud):
 
 def STT_translation(target_language, source_language, s_aud):
     print(f"The s_aud file: {s_aud}")
-    speech_translation_config = speechsdk.translation.SpeechTranslationConfig(subscription=environ.get('STT_subscription_key'),
-                                                                          region=environ.get('STT_region'))
+    speech_translation_config = speechsdk.translation.SpeechTranslationConfig(subscription=settings.STT_SUBSCRIPTION,
+                                                                          region= settings.STT_REGION)
 
     speech_translation_config.speech_recognition_language=miscConstants.SUPPORTED_STT_LANGUAGES[source_language]
 

@@ -78,8 +78,8 @@ REST_FRAMEWORK = {
 ROOT_URLCONF = 'greenai_chatbot_backend.urls'
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=1),
-    'REFRESH_TOKEN_LIFETIME': timedelta(minutes=2),     
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=3560),
+    'REFRESH_TOKEN_LIFETIME': timedelta(minutes=5890),     
     'ROTATE_REFRESH_TOKENS': False,
     'BLACKLIST_AFTER_ROTATION': False,
     'UPDATE_LAST_LOGIN': False,
@@ -146,15 +146,18 @@ DATABASES ={
 }
 
 
+T2T_SUBSCRIPTION_KEY = env('T2T_subscription_key')
+T2T_REGION = env('T2T_region')
+T2T_TRANSLATION_ENDPOINT = env('T2T_translation_endpoint')
+
+STT_SUBSCRIPTION = env('STT_subscription_key')
+STT_REGION = env('STT_region')
+
 HF_TOKEN = env('HF_TOKEN')
 PC_KEY = env('PC_KEY')
 MAX_RET_DOCS = env.int('MAX_RET_DOCS')
 MAX_SCORE = env.float('MAX_SCORE')
 
-
-SUBSCRIPTION_KEY = env('SUBSCRIPTION_KEY')
-REGION = env('REGION')
-TRANSLATION_ENDPOINT = env('TRANSLATION_ENDPOINT')
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
