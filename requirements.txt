@@ -1,5 +1,7 @@
 anyio==4.4.0
 asgiref==3.7.2
+azure-cognitiveservices-speech==1.38.0
+Brotli==1.1.0
 certifi==2024.2.2
 charset-normalizer==3.3.2
 colorama==0.4.6
@@ -39,3 +41,4 @@ typing_extensions==4.12.1
 tzdata==2023.4
 urllib3==2.2.1
 virtualenv==20.25.3
+whitenoise==6.6.0
