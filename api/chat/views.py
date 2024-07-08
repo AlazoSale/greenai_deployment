@@ -36,6 +36,7 @@ class ConversationMessagesListAPIView(generics.ListAPIView):
     def get_queryset(self):
         return chatModels.Message.objects.filter(conversation__uuid = self.kwargs.get('uuid')).order_by('created_at')
 
+
 class T2TTranslationAPIView(generics.GenericAPIView):
     permission_classes = [IsAuthenticated]
 
@@ -46,9 +47,19 @@ class T2TTranslationAPIView(generics.GenericAPIView):
         if not all(param in params for param in required_params):
             raise NotFound(detail=f'Missing parameters: {", ".join(required_params)}')
 
-        translated_text = translateActions.translate_text(*[params.get(param) for param in required_params])
+        translated_text = translateActions.T2T_translation(*[params.get(param) for param in required_params])
         return Response({'translated_text': translated_text})
     
 
+class STTTranslationAPIView(generics.GenericAPIView):
+    permission_classes = [IsAuthenticated]
+    def post(self, request, *args, **kwargs):
+        params = self.request.query_params
+        required_params = ['target_lang', 'source_lang']
 
+        if not all(param in params for param in required_params):
+            raise NotFound(detail=f'Missing parameters: {", ".join(required_params)}')
+
+        translated_text = translateActions.STT_translation(*[params.get(param) for param in required_params],request.FILES['s_aud'])
+        return Response({'translated_text': translated_text})
 

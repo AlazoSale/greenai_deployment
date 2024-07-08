@@ -13,6 +13,7 @@ from misc import models as miscModels
 def validate_user_name_format(value):
     return value
 
+
 def validate_email_input( value):
     is_email_format = re.match(
             r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b', value)
@@ -26,6 +27,7 @@ def validate_email_input_exists( value):
         if not userModels.User.objects.filter(email=value).exists():
             raise serializers.ValidationError('User with this email does not exist.')
         return value
+
 
 def validate_password_match(password, confirm_password):
         if password != confirm_password:
@@ -54,6 +56,7 @@ def validate_otp(otp, value):
     except:
         raise serializers.ValidationError('Invalid OTP or OTP Expired.')
     return otp
+
 
 def verify_otp(otp, value):
     if not userModels.User.objects.filter(email= value).first():

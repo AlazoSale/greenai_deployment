@@ -78,15 +78,6 @@ class UserDetailsSerializer(serializers.ModelSerializer):
 
 
 
-
-
-
-
-
-
-
-
-
 class ForgotPasswordValidators:
     @staticmethod
     def validate_email_exists(value):

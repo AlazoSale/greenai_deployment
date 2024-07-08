@@ -18,3 +18,18 @@ SUPPORTED_LANGUAGES = {
     "Urdu": "ur",
     "English": "en"
 }
+
+SUPPORTED_STT_LANGUAGES = {
+    "Hindi": "hi",
+    "Bengali": "bn",
+    "Gujarati": "gu",
+    "Kannada": "kn",
+    "Malayalam": "ml",
+    "Marathi": "mr",
+    "Punjabi": "pa",
+    "Tamil": "ta",
+    "Telugu": "te",
+    "Urdu": "ur",
+    "SEnglish": "en-US",
+    "TEnglish": "en"
+}
